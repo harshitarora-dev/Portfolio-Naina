@@ -1326,27 +1326,31 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .client-tag {
   font-size: 0.775rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   color: var(--primary-light);
   background: var(--bg-accent-soft);
-  padding: 0.3rem 0.75rem;
+  padding: 0.35rem 0.8rem;
   border-radius: var(--radius-full);
+  white-space: nowrap;
 }
 
 .category-tag {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-subtle);
+  white-space: nowrap;
 }
 
 .portfolio-body {
-  padding: 1rem 1.5rem 1.5rem;
+  padding: 1rem 1.5rem 1.25rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -1401,8 +1405,9 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 1rem;
+  padding: 1.15rem 1.5rem 1.5rem;
   border-top: 1px solid var(--border-light);
+  margin-top: auto;
 }
 
 .read-sample-btn {
