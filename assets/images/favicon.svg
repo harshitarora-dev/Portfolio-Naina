@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="nj-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    <filter id="subtle-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#2563EB" flood-opacity="0.3" />
+    </filter>
+  </defs>
+  
+  <!-- Rounded Squircle Background -->
+  <rect x="24" y="24" width="464" height="464" rx="145" ry="145" fill="url(#nj-gradient)" filter="url(#subtle-shadow)" />
+
+  <!-- Monogram NJ Text -->
+  <text x="50%" y="54%" 
+        font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+        font-size="220" 
+        font-weight="800" 
+        letter-spacing="-10" 
+        fill="#FFFFFF" 
+        text-anchor="middle" 
+        dominant-baseline="central">NJ</text>
+</svg>
