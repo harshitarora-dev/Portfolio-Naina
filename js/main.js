@@ -562,6 +562,8 @@ function initClipboardUtils() {
   copyBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
       const text = btn.getAttribute('data-copy');
       if (text) {
         navigator.clipboard.writeText(text).then(() => {
