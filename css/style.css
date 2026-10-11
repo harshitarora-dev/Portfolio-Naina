@@ -2608,6 +2608,14 @@ h1, h2, h3, h4, h5, h6 {
     padding: 3.75rem 0;
   }
 
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
   .section-header {
     margin-bottom: 2.5rem;
   }
@@ -2872,17 +2880,18 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.1rem;
   }
 
-  /* Portfolio Tabs Mobile (Horizontal Touch Scroll) */
+  /* Portfolio Tabs Mobile (Responsive Wrap & Clear Touch Targets) */
   .filter-tabs-wrapper {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: flex-start;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 0.65rem;
-    margin-bottom: 1.75rem;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    overflow: visible;
   }
 
   .filter-tabs-wrapper::-webkit-scrollbar {
@@ -2891,8 +2900,11 @@ h1, h2, h3, h4, h5, h6 {
 
   .filter-btn {
     flex-shrink: 0;
-    padding: 0.5rem 1rem;
+    padding: 0.45rem 0.9rem;
     font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border-radius: var(--radius-full);
   }
 
   .portfolio-grid {
@@ -2901,15 +2913,41 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .portfolio-header-strip {
-    padding: 1.25rem 1.25rem 0.5rem;
+    padding: 1.15rem 1.15rem 0.4rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.45rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .client-tag {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.65rem;
+    line-height: 1.3;
+    white-space: normal;
+  }
+
+  .category-tag {
+    font-size: 0.72rem;
+    line-height: 1.3;
+    white-space: normal;
   }
 
   .portfolio-body {
-    padding: 0.75rem 1.25rem 1.25rem;
+    padding: 0.75rem 1.15rem 1.15rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .portfolio-title {
     font-size: 1.15rem;
+    line-height: 1.35;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   /* Reviews & Marquee on Mobile */
@@ -2929,16 +2967,18 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 2.5rem;
   }
 
-  /* Pricing Tabs Mobile */
+  /* Pricing Tabs Mobile (Responsive Wrap & Clear Touch Targets) */
   .pricing-tabs-nav {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: flex-start;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 0.5rem;
-    gap: 0.4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    overflow: visible;
   }
 
   .pricing-tabs-nav::-webkit-scrollbar {
@@ -2947,8 +2987,11 @@ h1, h2, h3, h4, h5, h6 {
 
   .pricing-tab-btn {
     flex-shrink: 0;
-    padding: 0.5rem 1rem;
-    font-size: 0.825rem;
+    padding: 0.45rem 0.95rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border-radius: var(--radius-full);
   }
 
   .pricing-card {
@@ -2963,7 +3006,9 @@ h1, h2, h3, h4, h5, h6 {
   .contact-info-card, .contact-form-card {
     padding: 1.5rem 1.25rem;
     width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
+    overflow: hidden;
   }
 
   .form-row {
@@ -2980,7 +3025,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .channel-card {
-    padding: 0.85rem 1rem;
+    padding: 0.85rem 0.95rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -3008,11 +3053,14 @@ h1, h2, h3, h4, h5, h6 {
 
   .channel-text {
     min-width: 0;
+    flex: 1;
     overflow: hidden;
   }
 
   .channel-text h4 {
     font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.3;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -3020,9 +3068,10 @@ h1, h2, h3, h4, h5, h6 {
 
   .channel-text p {
     font-size: 0.76rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    margin: 0;
+    line-height: 1.3;
+    word-break: break-all;
+    overflow-wrap: anywhere;
   }
 
   .channel-card .copy-btn {
@@ -3067,14 +3116,26 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: var(--radius-lg);
     overflow: hidden;
     width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
   }
 
   .sample-preview-box {
     padding: 0.75rem 0.85rem;
     font-size: 0.825rem;
+    line-height: 1.5;
     word-break: break-word;
     overflow-wrap: anywhere;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .portfolio-footer {
+    padding: 0.85rem 1.15rem 1.15rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   /* CTA Banner Mobile */
@@ -3103,10 +3164,23 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem 1.25rem;
+    margin-bottom: 2.25rem;
     width: 100%;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.875rem;
+    margin: 0.75rem 0 1.25rem;
   }
 
   .footer-col {
@@ -3115,14 +3189,39 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
   }
 
+  .footer-col-connect {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--border-light);
+    padding-top: 1.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .footer-col h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.85rem;
+    color: var(--text-main);
+    letter-spacing: -0.2px;
+  }
+
   .footer-links {
-    gap: 0.65rem;
+    gap: 0.55rem;
   }
 
   .footer-links a {
     word-break: break-word;
     overflow-wrap: anywhere;
-    font-size: 0.875rem;
+    font-size: 0.86rem;
+    padding: 0.15rem 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .footer-col-connect .footer-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
   }
 
   .footer-bottom {
@@ -3131,6 +3230,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: 0.75rem;
     padding-top: 1.5rem;
     font-size: 0.8rem;
+    border-top: 1px solid var(--border-light);
   }
 
   /* Modal on Mobile */
@@ -3181,6 +3281,59 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     font-size: 0.8rem;
     padding: 0.75rem 1rem;
+  }
+}
+
+/* Compact Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .portfolio-header-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    padding: 1.1rem 1.1rem 0.35rem;
+  }
+
+  .client-tag {
+    font-size: 0.7rem;
+    padding: 0.22rem 0.6rem;
+  }
+
+  .category-tag {
+    font-size: 0.7rem;
+  }
+
+  .portfolio-body {
+    padding: 0.65rem 1rem 1rem;
+  }
+
+  .sample-preview-box {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .filter-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.76rem;
+  }
+
+  .pricing-tab-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.78rem;
+  }
+
+  .contact-info-card, .contact-form-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .channel-card {
+    padding: 0.75rem 0.8rem;
+    gap: 0.5rem;
   }
 }
 
