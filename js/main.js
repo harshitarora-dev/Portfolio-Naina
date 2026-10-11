@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initClipboardUtils();
   initContactForm();
   initScrollAnimations();
+  initAmbientBackground();
 });
 
 /* ==========================================================================
@@ -656,4 +657,301 @@ function initScrollAnimations() {
   document.querySelectorAll('.animate-fade-in, .service-card, .portfolio-card, .metric-card').forEach(el => {
     observer.observe(el);
   });
+}
+
+/* ==========================================================================
+   12. AMBIENT MOVING PARTICLES & SHIMMER STARS (Light Theme Professional)
+   ========================================================================== */
+function initAmbientBackground() {
+  const canvas = document.getElementById('ambient-particles');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  let particles = [];
+  let animationId = null;
+  let isRunning = true;
+
+  // Track mouse coordinates for interactive response
+  const mouse = {
+    x: -9999,
+    y: -9999,
+    radius: 130,
+    active: false,
+    clearTimer: null
+  };
+
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    mouse.active = true;
+    if (mouse.clearTimer) clearTimeout(mouse.clearTimer);
+    mouse.clearTimer = setTimeout(() => {
+      mouse.active = false;
+    }, 2000);
+  }, { passive: true });
+
+  window.addEventListener('mouseleave', () => {
+    mouse.active = false;
+  });
+
+  // Tailored luxury light-theme color palette:
+  // Royal Sapphire (#2563EB), Warm Amber Gold (#D97706), Soft Amethyst (#9333EA), Navy Slate (#1E3A8A)
+  const colorPalette = [
+    { r: 37, g: 99, b: 235 },   // Royal Indigo / Sapphire
+    { r: 217, g: 119, b: 6 },   // Warm Amber Gold
+    { r: 245, g: 158, b: 11 },  // Bright Champagne Gold
+    { r: 147, g: 51, b: 234 },  // Soft Purple
+    { r: 30, g: 58, b: 138 }    // Deep Navy
+  ];
+
+  class Particle {
+    constructor(init = false) {
+      this.reset(init);
+    }
+
+    reset(init = false) {
+      this.x = Math.random() * (width || window.innerWidth);
+      this.y = init ? Math.random() * (height || window.innerHeight) : (height || window.innerHeight) + 20 + Math.random() * 30;
+
+      // 4 Particle Types for a rich creative stardust atmosphere:
+      // - 4-point star (✦)
+      // - Soft glowing orb/dot
+      // - Micro diamond (◆)
+      // - Editorial cross (+)
+      const rand = Math.random();
+      if (rand < 0.38) {
+        this.type = 'star';
+        this.size = 3.2 + Math.random() * 4.5; // Star outer radius
+      } else if (rand < 0.72) {
+        this.type = 'orb';
+        this.size = 1.6 + Math.random() * 2.6;
+      } else if (rand < 0.88) {
+        this.type = 'diamond';
+        this.size = 2.4 + Math.random() * 3.2;
+      } else {
+        this.type = 'cross';
+        this.size = 2.8 + Math.random() * 2.8;
+      }
+
+      this.color = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+      this.speedY = 0.22 + Math.random() * 0.42; // Upward drift
+      this.driftX = 0.18 + Math.random() * 0.35;
+      this.driftSpeed = 0.0008 + Math.random() * 0.0018;
+      this.seed = Math.random() * 1000;
+
+      // Rotation for stars and geometric glyphs
+      this.angle = Math.random() * Math.PI * 2;
+      this.rotSpeed = (Math.random() - 0.5) * 0.012;
+
+      // Twinkling luminosity
+      this.baseAlpha = 0.22 + Math.random() * 0.34;
+      this.twinkleSpeed = 0.0015 + Math.random() * 0.003;
+      this.phase = Math.random() * Math.PI * 2;
+
+      // Interactive velocity
+      this.vx = 0;
+      this.vy = 0;
+    }
+
+    update(time) {
+      this.x += Math.sin(time * this.driftSpeed + this.seed) * this.driftX + this.vx;
+      this.y -= this.speedY + this.vy;
+      this.angle += this.rotSpeed;
+
+      // Decelerate mouse velocity
+      this.vx *= 0.93;
+      this.vy *= 0.93;
+
+      // Mouse proximity interaction
+      if (mouse.active) {
+        const dx = this.x - mouse.x;
+        const dy = this.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < mouse.radius && dist > 0) {
+          const force = (1 - dist / mouse.radius) * 1.5;
+          const nx = dx / dist;
+          const ny = dy / dist;
+          this.vx += nx * force * 0.5;
+          this.vy += ny * force * 0.5;
+        }
+      }
+
+      // Recycle when moving out of view
+      if (this.y < -30 || this.x < -30 || this.x > width + 30) {
+        this.reset(false);
+      }
+    }
+
+    draw(ctx, time) {
+      const twinkle = Math.sin(time * this.twinkleSpeed + this.phase);
+      const alpha = Math.max(0.08, Math.min(0.85, this.baseAlpha + twinkle * 0.2));
+      const { r, g, b } = this.color;
+
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+
+      if (this.type === 'star') {
+        // 4-point sparkle star ✦
+        const s = this.size;
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${alpha * 0.5})`;
+        ctx.shadowBlur = 5;
+
+        ctx.beginPath();
+        ctx.moveTo(0, -s);
+        ctx.quadraticCurveTo(0, 0, s, 0);
+        ctx.quadraticCurveTo(0, 0, 0, s);
+        ctx.quadraticCurveTo(0, 0, -s, 0);
+        ctx.quadraticCurveTo(0, 0, 0, -s);
+        ctx.closePath();
+        ctx.fill();
+
+        // Bright white center spark
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.9})`;
+        ctx.beginPath();
+        ctx.arc(0, 0, s * 0.24, 0, Math.PI * 2);
+        ctx.fill();
+      } else if (this.type === 'orb') {
+        // Soft glowing circular orb
+        const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, this.size * 2);
+        grad.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${alpha * 0.85})`);
+        grad.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${alpha * 0.35})`);
+        grad.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(0, 0, this.size * 2, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.75})`;
+        ctx.beginPath();
+        ctx.arc(0, 0, this.size * 0.55, 0, Math.PI * 2);
+        ctx.fill();
+      } else if (this.type === 'diamond') {
+        // Minimalist diamond
+        const s = this.size;
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.85})`;
+        ctx.beginPath();
+        ctx.moveTo(0, -s);
+        ctx.lineTo(s * 0.7, 0);
+        ctx.lineTo(0, s);
+        ctx.lineTo(-s * 0.7, 0);
+        ctx.closePath();
+        ctx.fill();
+      } else if (this.type === 'cross') {
+        // Editorial micro cross +
+        const s = this.size * 0.85;
+        const w = 1.0;
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.8})`;
+        ctx.fillRect(-w / 2, -s, w, s * 2);
+        ctx.fillRect(-s, -w / 2, s * 2, w);
+      }
+
+      ctx.restore();
+    }
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+
+    const targetCount = width < 768 ? 32 : (width < 1200 ? 50 : 68);
+
+    if (particles.length === 0) {
+      for (let i = 0; i < targetCount; i++) {
+        particles.push(new Particle(true));
+      }
+    } else {
+      while (particles.length < targetCount) {
+        particles.push(new Particle(true));
+      }
+      if (particles.length > targetCount) {
+        particles.length = targetCount;
+      }
+    }
+  }
+
+  // Draw faint dynamic constellation lines
+  function drawConstellations() {
+    const maxDist = 80;
+    const len = particles.length;
+
+    for (let i = 0; i < len; i++) {
+      for (let j = i + 1; j < len; j++) {
+        const p1 = particles[i];
+        const p2 = particles[j];
+        const dx = p1.x - p2.x;
+        const dy = p1.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < maxDist) {
+          const alpha = (1 - dist / maxDist) * 0.12;
+          ctx.strokeStyle = `rgba(37, 99, 235, ${alpha})`;
+          ctx.lineWidth = 0.75;
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  let startTime = performance.now();
+
+  function animate(currentTime) {
+    if (!isRunning) return;
+
+    ctx.clearRect(0, 0, width, height);
+
+    const elapsed = currentTime - startTime;
+
+    // Draw constellations
+    drawConstellations();
+
+    // Update & draw particles
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update(elapsed);
+      particles[i].draw(ctx, elapsed);
+    }
+
+    animationId = requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      isRunning = false;
+      if (animationId) cancelAnimationFrame(animationId);
+    } else {
+      isRunning = true;
+      startTime = performance.now();
+      animationId = requestAnimationFrame(animate);
+    }
+  });
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion) {
+    resize();
+    animationId = requestAnimationFrame(animate);
+  }
 }
