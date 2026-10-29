@@ -260,8 +260,8 @@ function initPortfolioFilters() {
       const filterValue = btn.getAttribute('data-filter');
 
       portfolioCards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-        if (filterValue === 'all' || cardCategory === filterValue) {
+        const cardCategory = card.getAttribute('data-category') || '';
+        if (filterValue === 'all' || cardCategory.split(' ').includes(filterValue)) {
           card.style.display = 'flex';
           card.style.animation = 'slideInUp 0.35s ease forwards';
         } else {
@@ -276,147 +276,261 @@ function initPortfolioFilters() {
    5. SAMPLE WRITING & SCRIPT READER MODAL
    ========================================================================== */
 const sampleDatabase = {
-  "cyberpeace": {
+  "cyberpeace-cognitive-ai": {
     client: "CyberPeace Foundation of India",
-    category: "SEO Blog & Digital Safety Guide",
-    title: "Navigating Digital Safety in the AI Era: A Comprehensive Guide for Young Netizens",
-    meta: "Word Count: 1,450 words | Target Audience: Youth & Parents | Keywords: digital safety, AI privacy, cyber hygiene",
+    category: "Published Explainer • Human-Centred AI",
+    title: "AI as a Cognitive Assistant or Cognitive Substitute? The Case for Human-Centred AI Use",
+    meta: "Byline: By Naina Jain (Intern, Policy & Advocacy) | Published: Sep 12, 2026 • 6 min read",
+    liveUrl: "https://cyberpeace.org/resources/blogs/ai-as-a-cognitive-assistant-or-cognitive-substitute-the-case-for-human-centred-ai-use",
     content: `
-      <h2>Executive Overview</h2>
-      <p>As artificial intelligence becomes woven into the daily digital fabric of young users—from deepfakes and AI chatbots to automated profile cloning—understanding digital hygiene is no longer optional. This comprehensive long-form guide was developed to translate complex cybersecurity concepts into actionable, empowering online safety principles.</p>
-
-      <h3>1. The Emerging Landscape of Synthetic Identity and AI Scams</h3>
-      <p>The transition from traditional phishing to hyper-personalized AI-generated social engineering requires a fundamental paradigm shift. Where users once checked for spelling errors and odd email addresses, AI-driven scams now emulate familial voices, replicate writing cadence, and create convincing visual assets.</p>
+      <h2>Executive Summary & Core Premise</h2>
+      <p>Artificial intelligence tends to attract extreme opinions. Some commentators argue it is eroding our capacity to think; others believe it is freeing our minds for more valuable work. Both views miss the more important point: <strong>the effect of AI depends entirely on how a person chooses to use it.</strong> Whether a chatbot supports someone’s thinking or replaces it altogether is what separates an assistant from a substitute.</p>
 
       <div class="script-cue">
-        <strong>Key Research Insight:</strong> Over 64% of teenagers surveyed interact with AI bots without recognizing data harvesting parameters. Communication must focus on empowerment rather than fear.
+        <strong>Core Thesis:</strong> "When AI is used as a substitute, users outsource the active cognitive struggle required to form insights. When used as an assistant, it accelerates research while preserving critical human discernment."
       </div>
 
-      <h3>2. The 4 Pillars of Cyber Hygiene</h3>
-      <p><strong>Pillar I: Zero-Trust Social Sharing</strong> — Never broadcasting real-time location metrics or institutional identifiers in public feeds.<br>
-      <strong>Pillar II: Multi-Layer Authentication</strong> — Transitioning beyond SMS verification toward hardware keys and authenticator protocols.<br>
-      <strong>Pillar III: Synthetic Media Spotting</strong> — Inspecting audio anomalies, unsynchronized lip movements, and unexpected urgency in financial or emotional requests.<br>
-      <strong>Pillar IV: Immediate Redressal Mechanisms</strong> — Knowing national cybercrime reporting portals and emergency helplines.</p>
+      <h3>1. The Cognitive Offloading Dilemma</h3>
+      <p>Not long ago, generative AI was a novelty. Now it shows up daily in classrooms, newsrooms, and corporate offices—almost everywhere people write, plan, or make decisions. When a professional offloads drafting to an algorithm without revision, they do not simply save time; they gradually surrender their analytical voice.</p>
 
-      <h3>3. Conclusion & Call to Awareness</h3>
-      <p>Digital resilience is built through continuous awareness and thoughtful online habits. Technology will continue to evolve, but a mindful, questioning mindset remains the strongest firewall.</p>
+      <h3>2. The 'Human in the Loop' Framework</h3>
+      <p>Human-centred AI usage establishes clear boundaries:
+      <br>• <strong>Phase 1 (Ideation & Discovery):</strong> Using AI for divergent topic exploration and structural outlines.
+      <br>• <strong>Phase 2 (Critical Synthesis):</strong> Human verification of factual premises, nuanced tone calibration, and ethical verification.
+      <br>• <strong>Phase 3 (Discernment):</strong> Retaining sole ownership over conclusions, accountability, and empathy.</p>
+
+      <h3>3. Strategic Takeaway</h3>
+      <p>Technology will continue to evolve, but a mindful, questioning mindset remains humanity's strongest cognitive firewall. Organizations must train teams to treat AI tools as intellectual sparring partners rather than autopilot replacements.</p>
     `
   },
-  "usi": {
-    client: "United Services Institution of India (USI)",
-    category: "Executive LinkedIn Series & Thought Leadership",
-    title: "Strategic Digital Leadership: Communicating Geopolitical Insights with Impact",
-    meta: "Format: Executive LinkedIn Posts | Target: Policy Makers, Think Tanks, Defense Community",
+  "cyberpeace-irdai": {
+    client: "CyberPeace Foundation of India",
+    category: "Legal & Regulatory Guide • Cybersecurity Compliance",
+    title: "The Insurance Regulatory and Development Authority of India (IRDAI) Cyber Security Guidelines 2026",
+    meta: "Byline: By Naina Jain (Intern, Policy & Advocacy) | Published: Aug 27, 2026 • 6 min read",
+    liveUrl: "https://cyberpeace.org/resources/blogs/the-insurance-regulatory-and-development-authority-of-india-irdai-cyber-security-guidelines-2026",
     content: `
-      <h2>Executive LinkedIn Campaign Brief</h2>
-      <p>Managed the digital leadership and strategic LinkedIn presence for <strong>Dr. B.K. Sharma</strong>, Director General of USI. The core objective was articulating nuanced national security, geopolitical research, and strategic dialogues with dignity, intellectual authority, and high digital engagement.</p>
+      <h2>Regulatory Overview</h2>
+      <p>Insurance companies hold immense reserves of sensitive consumer data: medical history, bank account details, identity proofs, and years of claims records—all stored on insurer servers, waiting. That makes the sector an easy target. India saw close to <strong>370 million malware attacks in a single recent year</strong>, with banking, financial services, and insurance firms bearing the brunt of it.</p>
 
-      <h3>Featured LinkedIn Post Sample</h3>
       <div class="script-cue">
-        <strong>Hook:</strong> In an era defined by polycrisis, deterrence is no longer purely kinetic—it is technological, cognitive, and narrative.<br><br>
-        <strong>Body:</strong> At USI's recent national security seminar, three strategic imperatives emerged:<br>
-        1. <em>Cognitive Resilience:</em> How institutions protect sovereign information domains.<br>
-        2. <em>Indigenisation & Defense Tech:</em> Moving from technology importers to indigenous self-reliance.<br>
-        3. <em>Strategic Partnerships:</em> Aligning bilateral defense dialogues with actionable maritime and cyber cooperation.<br><br>
-        True strategic foresight lies not in reacting to crises, but in shaping the geopolitical architecture before vulnerabilities are tested.<br><br>
-        <strong>CTA & Question:</strong> How should emerging policy frameworks balance speed of adoption with institutional security? Looking forward to perspectives from fellow strategists and scholars.<br><br>
-        #NationalSecurity #DefenseStrategy #Geopolitics #StrategicLeadership #USI
+        <strong>Regulatory Context:</strong> Breaking down IRDAI's mandated cyber security framework across governance, third-party vendor audits, board accountability, and incident reporting timelines.
       </div>
 
-      <h3>Impact & Metrics</h3>
-      <p>Achieved a 160% rise in organic executive post impressions, expanded engagement among global think-tank leaders, and established a consistent cadence of research dissemination.</p>
+      <h3>Key Mandates from the 2026 Guidelines</h3>
+      <p><strong>1. Chief Information Security Officer (CISO) Independence:</strong> Mandating independent reporting channels directly to the Board Risk Management Committee.<br>
+      <strong>2. Zero-Trust Architecture:</strong> Moving past perimeter security toward continuous verification of micro-segmented networks.<br>
+      <strong>3. Mandatory Vendor Vulnerability Assessments:</strong> Regulating third-party API integrations and cloud SaaS providers handling policyholder data.<br>
+      <strong>4. Rapid Incident Disclosure:</strong> Stricter timelines for reporting security breaches to national response centres.</p>
+
+      <h3>Why This Matters for Policyholders & Fintechs</h3>
+      <p>Cyber insurance is no longer an afterthought; it is a structural pillar of India's digital economy. As insurance distribution becomes API-driven, compliance with IRDAI guidelines is the baseline requirement for maintaining consumer trust.</p>
     `
   },
-  "montage": {
+  "cyberpeace-semiconductor": {
+    client: "CyberPeace Foundation of India",
+    category: "Deep Explainer • Global Geopolitics & Tech",
+    title: "The Tiny Chip That Runs the Entire World, and Why Everyone's Fighting Over It",
+    meta: "Byline: By Naina Jain (Intern, Policy & Advocacy) | Published: Jul 24, 2026 • 5 min read",
+    liveUrl: "https://cyberpeace.org/resources/blogs/the-tiny-chip-that-runs-the-entire-world-and-why-everyones-fighting-over-it",
+    content: `
+      <h2>The Global Silicon Battleground</h2>
+      <p>Microchips are the invisible foundation of the modern economy. From consumer smartphones and automotive electronics to military defense systems and generative AI supercomputers, virtually every critical industry relies on semiconductor supply chains.</p>
+
+      <div class="script-cue">
+        <strong>The Paradox:</strong> "Small in size, massive in power, critical in control. Yet, despite their ubiquity, chip manufacturing remains one of the most concentrated and vulnerable supply networks on Earth."
+      </div>
+
+      <h3>Key Geopolitical Chokepoints Analyzed</h3>
+      <p><strong>• The Monopoly of Extreme Ultraviolet (EUV) Lithography:</strong> How Dutch firm ASML remains the sole manufacturer capable of producing machines that print sub-3nm circuits.<br>
+      <strong>• The Taiwan Strait & TSMC:</strong> Why over 90% of the world's most advanced processing chips are fabricated on a single island, creating unprecedented geopolitical risk.<br>
+      <strong>• India's Semiconductor Mission (ISM):</strong> India’s multi-billion dollar incentive scheme, semiconductor fabrication plants in Gujarat and Assam, and the push toward sovereign silicon self-reliance.</p>
+
+      <h3>Narrative Style & Impact</h3>
+      <p>This article deconstructs intricate engineering physics (nanometer scaling, lithography, wafer fabrication) into a gripping narrative of economic statecraft, making high-level technology strategy engaging for diverse readers.</p>
+    `
+  },
+  "cyberpeace-un-divide": {
+    client: "CyberPeace Foundation of India",
+    category: "UN Policy Analysis • Multilateral Tech Governance",
+    title: "AI and the New Global Divide: What a Recent UN Report Warns Us About",
+    meta: "Byline: By Naina Jain (Intern, Policy & Advocacy) | Published: Aug 4, 2026 • 5 min read",
+    liveUrl: "https://cyberpeace.org/resources/blogs/ai-and-the-new-global-divide-what-a-recent-un-report-warns-us-about",
+    content: `
+      <h2>International Policy Analysis</h2>
+      <p>In July 2026, the United Nations published the first draft of its landmark report on the Development of Artificial Intelligence, authored by 40 international scientists and policymakers from the Independent Scientific Panel on AI, co-chaired by Yoshua Bengio and Maria Ressa.</p>
+
+      <div class="script-cue">
+        <strong>The Warning:</strong> The report warns of an intensifying geopolitical chasm: without intervention, AI advancements risk entrenching historic economic inequalities between nations with massive compute capacity and the Global South.
+      </div>
+
+      <h3>Key Themes Addressed</h3>
+      <p><strong>1. Compute Sovereignty:</strong> Over 85% of global high-end GPU clusters are concentrated within two sovereign territories, leaving developing economies dependent on foreign cognitive infrastructure.<br>
+      <strong>2. Algorithmic Bias in Diverse Populations:</strong> The acute risks of training foundational models on Western datasets and deploying them across multilingual Global South jurisdictions without localization.<br>
+      <strong>3. Global Digital Compact & Multilateral Frameworks:</strong> Proposing pooled international compute resources, open-source model sharing, and enforceable ethical norms.</p>
+
+      <h3>Research Methodology</h3>
+      <p>Authored through deep analysis of primary UN publications, multilateral policy communiqués, and international relations frameworks, bridging legal jurisprudence with technology policy.</p>
+    `
+  },
+  "montage-ai": {
     client: "Montage IT Solutions",
-    category: "SEO Technical Blog",
-    title: "Demystifying Cloud Migration: 5 Practical Steps for Growing Enterprises",
-    meta: "Word Count: 1,800 words | Industry: Enterprise IT & Cloud Infrastructure | Readability Score: Grade 9",
+    category: "SEO Technical Guide • Enterprise IT Strategy",
+    title: "Why Every Business Needs an AI Strategy in 2026",
+    meta: "Word Count: 1,600+ words | Target: Enterprise Leaders, CTOs & SMB Owners | Format: B2B SEO Pillar Article",
+    liveUrl: "https://blog.monteage.co.in/why-every-business-needs-an-ai-strategy-in-2026-1",
     content: `
-      <h2>Introduction: The Cloud Crossroads</h2>
-      <p>For mid-market enterprises, cloud migration is often portrayed as an all-or-nothing leap. Yet, the most successful digital transformations are calculated, phased migrations that minimize legacy friction while unlocking scalable infrastructure.</p>
-
-      <h3>Step 1: Workload Discovery & TCO Audit</h3>
-      <p>Before selecting AWS, Azure, or GCP, businesses must categorize workloads into three buckets: Cloud-Native candidates, Refactor essentials, and Retain/Retire legacy monoliths.</p>
-
-      <h3>Step 2: Architecture Strategy — Hybrid vs Multi-Cloud</h3>
-      <p>A balanced hybrid approach frequently yields the highest ROI for security-sensitive operations, allowing proprietary customer data to remain on compliant private instances while compute-heavy analytics scale elastically.</p>
+      <h2>The Enterprise Crossroads</h2>
+      <p>By 2026, AI is no longer a speculative technology—it has become an integral part of how modern enterprises operate, serve customers, and make commercial decisions. The fundamental question is no longer <em>whether</em> a business should use AI, but <em>how to choose the right tools and govern them effectively</em>.</p>
 
       <div class="script-cue">
-        <strong>SEO Optimization Note:</strong> Targeted high-intent long-tail keywords including "enterprise cloud migration roadmap 2026", "hybrid cloud cost optimization", and "cloud infrastructure security checklist".
+        <strong>Strategic Insight:</strong> "Without a structured approach, businesses adopt too many disconnected AI tools, waste valuable budget, and experience zero measurable ROI. A strategy aligns software adoption with commercial outcomes."
       </div>
 
-      <h3>Step 3: Security & Automated Governance</h3>
-      <p>Embedding Zero Trust principles from day zero ensures that identity becomes the new perimeter, preventing misconfiguration leaks.</p>
+      <h3>Structured 6-Pillar Framework for Businesses</h3>
+      <p>• <strong>Productivity & Workflow Automation:</strong> Relieving human teams from repetitive data verification and ticketing bottlenecks.<br>
+      • <strong>Customer Service Transformation:</strong> Deploying context-aware AI chatbots that understand nuances rather than frustrating users with rigid scripts.<br>
+      • <strong>Sales & Marketing Intelligence:</strong> Intent data analysis for personalized outreach without spamming.<br>
+      • <strong>Data Security & Proprietary Protection:</strong> Preventing internal enterprise leaks into public training sets.<br>
+      • <strong>Continuous Employee Upskilling:</strong> Creating an internal culture that embraces AI as an accelerator rather than a threat.</p>
     `
   },
-  "certify-reel": {
-    client: "Certify Karo",
-    category: "Instagram Reel Script (High Retention)",
-    title: "Reel Script: How to Spot a Fake ISO Certificate in 10 Seconds",
-    meta: "Format: 30-Second Short Form Script | Platform: Instagram & YouTube Shorts | Target: Business Owners",
+  "yt-fssai-script": {
+    client: "CertifyKaro (YouTube Production)",
+    category: "YouTube Long-Form Explainer Video Script & SEO Package",
+    title: "FSSAI License 2026: New Rules, New Limits & Risk-Based Inspections Explained",
+    meta: "Runtime: 8-10 Minutes | Package: Full Script, Visual Cues, Retention Hooks, High-CTR Title & Description",
+    liveUrl: "https://www.youtube.com/watch?v=LlDIj7Mb7ok",
     content: `
-      <h2>Reel Script & Visual Production Breakdown</h2>
-      <p><strong>Goal:</strong> High-energy educational reel communicating certificate authenticity while positioning Certify Karo as the trusted certification partner.</p>
+      <h2>Complete Video Production Package</h2>
+      <p><strong>Client:</strong> CertifyKaro | <strong>Host:</strong> CA Shubham Jain / Team | <strong>Scriptwriter:</strong> Naina Jain</p>
+      <p>Crafted to explain complex food safety regulations in simple Hindi-English for restaurant owners, D2C food brands, cloud kitchens, and importers, maintaining viewer retention throughout.</p>
 
       <div class="script-cue">
-        <strong>[0:00 - 0:03] HOOK (Visual & Audio):</strong><br>
-        <em>Visual:</em> Creator holding up a fancy gold-stamped certificate, ripping a fake watermark graphic on screen.<br>
-        <em>Audio:</em> "90% of business owners are paying for FAKE ISO certificates without even knowing it! Here's how to check yours in 10 seconds."<br><br>
+        <strong>[0:00 - 0:45] HIGH-RETENTION HOOK:</strong><br>
+        <em>Visual:</em> Quick split screen showing a restaurant kitchen inspection notice and penalty numbers.<br>
+        <em>Host (Energetic, Authoritative):</em> "Agar aapka restaurant, cloud kitchen, ya packaged food business hai—toh FSSAI ke naye rules 2026 aapka pura operation badal sakte hain! Naye turnover limits, compulsory risk-based inspections, aur penalty jo 5 lakh tak ja sakti hai. Is video mein, har naya rule simple language mein samjhenge!"
+      </div>
 
-        <strong>[0:03 - 0:12] THE MISTAKE:</strong><br>
-        <em>Visual:</em> Quick screen recording showing an unaccredited search portal.<br>
-        <em>Audio:</em> "Most people just look at the logo. But anyone can put an ISO logo on Canva! The only thing that matters? The <strong>IAF accreditation mark</strong> and the verifiable certificate number."<br><br>
+      <h3>Script Chapter Breakdown</h3>
+      <p><strong>Chapter 1 (0:45 - 2:30):</strong> Basic Registration vs State License vs Central License—the exact updated turnover thresholds.<br>
+      <strong>Chapter 2 (2:30 - 5:15):</strong> What is 'Risk-Based Inspection'? High-risk food categories (dairy, meat, nutraceuticals) audit checklist.<br>
+      <strong>Chapter 3 (5:15 - 7:30):</strong> Documentation shortcuts to avoid rejection: FoSTaC supervisor certificate, water testing reports, and NOCs.<br>
+      <strong>Chapter 4 (7:30 - 8:45):</strong> Step-by-step online filing guide on FoSCoS portal.<br>
+      <strong>Outro & Lead Magnet (8:45 - 9:30):</strong> "Pinned comment mein free FSSAI 2026 Checklist link hai. Click karke download karein!"</p>
 
-        <strong>[0:12 - 0:22] THE SOLUTION:</strong><br>
-        <em>Visual:</em> Split screen showing IAF CertSearch official portal and entering a live number.<br>
-        <em>Audio:</em> "Go to iafcertsearch.org. Type in your company name or certificate ID. If it doesn't show up with an active IAF body? It's not recognized globally."<br><br>
+      <h3>SEO Deliverables Provided</h3>
+      <p>• <strong>CTR-Optimized Title:</strong> FSSAI License 2026: New Rules, New Limits & Risk-Based Inspections Explained<br>
+      • <strong>Description:</strong> 350-word keyword-rich synopsis with timestamps and lead capture links.<br>
+      • <strong>Tags:</strong> #FSSAI #FoodLicense #FoSCoS #CloudKitchenIndia #BusinessCompliance</p>
+    `
+  },
+  "yt-asisse-script": {
+    client: "CA Shubham Jain / CertifyKaro",
+    category: "YouTube Shorts & Instagram Reel Script",
+    title: "What Is ASISSE? Got a Government Survey Notice for Your Company? (30s Script)",
+    meta: "Format: 30-Second High-Conversion Short | Channels: YouTube Shorts & Instagram Reels",
+    liveUrl: "https://www.youtube.com/shorts/3C8ZDboH3hc",
+    content: `
+      <h2>30-Second Short-Form Script & Visual Flow</h2>
+      <p><strong>Goal:</strong> Stop the scroll, alleviate panic, clarify legal reality, and generate client inquiries for CertifyKaro survey compliance assistance.</p>
 
-        <strong>[0:22 - 0:30] CTA:</strong><br>
-        <em>Visual:</em> Text overlay: 'Comment CERTIFY for a Free Audit'<br>
-        <em>Audio:</em> "Want to get genuine, globally accredited certification for your brand without middlemen? Comment 'CERTIFY' and we'll check your status for free!"
+      <div class="script-cue">
+        <strong>[0:00 - 0:04] SCROLL-STOPPING HOOK:</strong><br>
+        <em>Visual:</em> Host holding phone looking alarmed, text on screen in bold red/yellow: <em>'Notice for ASISSE Survey?!'</em><br>
+        <em>Audio:</em> "Kya aapki company ko Government of India se aisa ASISSE Survey ka notice aaya hai? Rukiye, panic mat kijiye!"<br><br>
+
+        <strong>[0:04 - 0:14] THE PROBLEM & CONTEXT:</strong><br>
+        <em>Visual:</em> Screen recording of the Ministry of Statistics & Programme Implementation portal.<br>
+        <em>Audio:</em> "Yeh koi tax raid ya penalty notice nahi hai. Yeh hai <strong>Annual Survey of Unincorporated Sector Enterprises (ASISSE)</strong>. Ministry random companies ko survey ke liye select karti hai."<br><br>
+
+        <strong>[0:14 - 0:24] THE RISK (WHY YOU CANNOT IGNORE IT):</strong><br>
+        <em>Visual:</em> Host gesturing warning symbol, penalty clause highlighted.<br>
+        <em>Audio:</em> "Lekin dhyan rahe: Isko ignore kiya toh Collection of Statistics Act ke under fine lag sakta hai!"<br><br>
+
+        <strong>[0:24 - 0:30] CTA:</strong><br>
+        <em>Visual:</em> Host smiling, pointing to comments.<br>
+        <em>Audio:</em> "Notice ka reply kaise dena hai? Comment mein 'SURVEY' likho, humari team help karegi!"
       </div>
     `
   },
-  "certify-yt": {
-    client: "Certify Karo",
-    category: "YouTube Long-Form Script",
-    title: "YouTube Script: The Ultimate Beginner's Guide to ISO & Business Certifications in India",
-    meta: "Duration: 8-10 Minute Explainer | Tone: Authoritative, Approachable, Structured",
+  "linkedin-viral-shubham": {
+    client: "CA Shubham Jain (Co-Founder, CertifyKaro)",
+    category: "Viral Founder Storytelling • High Organic Reach",
+    title: "“2018 mein mera CA result aaya...” — The Big 4 vs Starting Practice Dilemma",
+    meta: "Reach: High Organic Viral Engagement | Platforms: LinkedIn & Twitter/X | Format: Narrative Hook & Dialogue",
+    liveUrl: "https://www.linkedin.com/posts/ca-shubham-jain-_incometax-newtaxregime-taxplanning-share-7502975365536059392-AUYF/",
     content: `
-      <h2>YouTube Long-Form Script Architecture</h2>
-      <p>A structured video script designed for maximum average watch duration (AWD) and conversion for prospective enterprise clients.</p>
+      <h2>The Viral Copy Breakdown</h2>
+      <p>Written for CA Shubham Jain, this viral post achieved massive organic reach, hundreds of shares, and passionate discussions across the Indian finance and startup ecosystem.</p>
 
-      <h3>Script Highlights</h3>
       <div class="script-cue">
-        <strong>[Intro Hook - 0:00 to 0:45]:</strong> "If you're bidding for government tenders, pitching to corporate clients, or trying to scale your exports, you've likely seen one requirement on every RFP: 'ISO 9001 or ISO 27001 Certified'. But what does it actually cost, how long does it take, and which certification does YOUR specific business need? In this video, we break down every single step..."<br><br>
-        <strong>[Chapter 1: The Certification Matrix]:</strong> Explaining ISO 9001 (Quality), ISO 27001 (Data Security), ISO 14001 (Environmental), and GMP.<br><br>
-        <strong>[Chapter 2: Cost & Timeline Truths]:</strong> Cutting through broker myths and breaking down actual audit timelines.<br><br>
-        <strong>[Chapter 3: Step-by-Step Documentation Checklist]:</strong> Internal audits, policy documents, non-conformance rectifications.<br><br>
-        <strong>[Outro & Lead Magnet]:</strong> Free downloadable ISO Readiness Checklist link in pinned comment.
+        <strong>Full Post Copy (Verbatim):</strong><br><br>
+        2018 mein mera CA result aaya, aur tab sabki ek hi advice thi:<br>
+        Pehle Big 4 join kar.<br>
+        Do teen saal job kar.<br>
+        Phir practice ka sochna.<br>
+        But...<br>
+        I started my own practice instead.<br><br>
+
+        The most common reaction was... "Bina experience ke client kaun dega?"<br><br>
+        Honestly, I had the same doubt. But practice taught me something no job could have.<br><br>
+        In a job, you see one small part of a client's work.<br>
+        In practice, a small business owner sits across the table and hands you everything.<br>
+        His GST, his loans, his family's savings, and sometimes his worries too.<br><br>
+        He is not just hiring a CA.<br>
+        He is deciding whether he can trust a young professional with his life's work.<br><br>
+        Paisa der se aaya, lekin seekhna pehle din se shuru ho gaya. And I'd choose it again 100 times.<br><br>
+        Fresh CAs: Job first or Practice first? What's your take? 👇<br>
+        #CALife #BizWithShubham #Entrepreneurship #IncomeTax
       </div>
+
+      <h3>Why This Post Exploded</h3>
+      <p><strong>1. Relatable Vulnerability:</strong> Acknowledging the universal fear ("Bina experience ke client kaun dega?").<br>
+      <strong>2. Empathy for Clients:</strong> Highlighting that small business owners entrust their life savings, not just paperwork.<br>
+      <strong>3. Polarizing Question CTA:</strong> Sparks genuine comments between professionals debating corporate job stability vs practice independence.</p>
     `
   },
-  "legal-tech": {
-    client: "Legal & Fintech Editorial",
-    category: "B.A. LL.B. Research Article",
-    title: "Smart Contracts vs Traditional Agreements: A Plain-English Legal Comparison",
-    meta: "Specialty: Legal-Tech Analysis | Perspective: B.A. LL.B. Interdisciplinary Insight",
+  "certifykaro-linkedin": {
+    client: "CertifyKaro (Official Company Page)",
+    category: "B2B Brand Communication & Inbound Strategy",
+    title: "Corporate Compliance, Trademarks, ISO & GST Simplified for Indian Founders",
+    meta: "Format: Carousel Breakdown & Educational Infographics | Audience: MSME Founders, CFOs, Startups",
+    liveUrl: "https://www.linkedin.com/posts/certifykaro-trademark-gst-iso-fssai-share-7519658451745087488-gmWk/",
     content: `
-      <h2>Bridging Code and Jurisprudence</h2>
-      <p>With a background in law (B.A. LL.B.), I specialize in deconstructing dense legal, regulatory, and financial frameworks into compelling, accessible digital literature.</p>
-
-      <h3>The Fundamental Tension: Rigidity vs Ambiguity</h3>
-      <p>Traditional contract law deliberately leaves room for commercial flexibility through terms like 'reasonable efforts' and 'good faith'. Smart contracts, executed on distributed ledger protocols, replace ambiguity with strict deterministic logic: <code>if X occurs, execute Y</code>.</p>
+      <h2>B2B LinkedIn Brand Strategy</h2>
+      <p>Managed social communication and content strategy for <strong>CertifyKaro</strong>, transforming technical compliance procedures (Trademark, GST, ISO, FSSAI, Startup India DPIIT recognition) into accessible, high-trust business educational assets.</p>
 
       <div class="script-cue">
-        <strong>Editorial Takeaway:</strong> Technology does not eliminate legal principles; it formalizes them. Companies bridging both worlds require content that resonates with both developers and legal counsels.
+        <strong>Sample Post Structure:</strong><br><br>
+        "Most founders spend ₹2,00,000 on branding, packaging, and digital ads before spending ₹4,500 on their Trademark application.<br><br>
+        Then comes the dreaded Objection Notice from a competitor who trademarked the same name 3 months earlier.<br><br>
+        Here is the 3-step Trademark Checklist every founder must run before launching their brand in 2026..."
       </div>
 
-      <h3>Key Takeaways for Modern Fintechs</h3>
-      <p>1. Hybrid contracts combining natural language agreements with cryptographic triggers.<br>
-      2. Jurisdiction and dispute resolution clauses for cross-border tokenized settlements.<br>
-      3. Compliance clarity for non-technical enterprise adopters.</p>
+      <h3>Strategic Outcome</h3>
+      <p>• Transformed a traditionally transactional legal-services brand into an educational authority on founder compliance.<br>
+      • Generated direct inbound consultation inquiries through comment triggers and value-first carousel breakdowns.</p>
+    `
+  },
+  "insta-humor-reels": {
+    client: "@bizwithshubham & @certifykaro",
+    category: "Instagram Reels • Humor, Relatable Culture & Brand Voice",
+    title: "Relatable Reels: CA Life, Startup Hustle & Client Realities",
+    meta: "Format: 15-30 Second Relatable Skits | Focus: Audio Timing, Punchy Dialogues & Comment Triggers",
+    liveUrl: "https://www.instagram.com/reel/DebqohCJXAd/",
+    content: `
+      <h2>Humor & Relatable Short-Form Production</h2>
+      <p>Developing punchy, humorous Instagram Reel concepts and captions for <strong>@bizwithshubham</strong> and <strong>@certifykaro</strong> that resonate with entrepreneurs, chartered accountants, and everyday taxpayers.</p>
+
+      <div class="script-cue">
+        <strong>Concept: "The Last Day of ITR Filing"</strong><br>
+        <em>Visual:</em> Split screen with trending audio. On one side, client texting 'Bhaiya thoda discount ho jayega kya?'. On the other side, CA staring at 50 Excel tabs at 11:58 PM.<br>
+        <em>Caption:</em> "Client: 'Bas 5 minute ka kaam hai.' <br>Me looking at 14 bank statements sent in blurry horizontal photos: 👁️👄👁️ Tag your CA and say thank you before 31st July! #CALife #TaxHumor #BizWithShubham"
+      </div>
+
+      <h3>Why Humor Works for Finance & Legal Brands</h3>
+      <p>Legal and financial compliance can feel dry and intimidating. Humorous, relatable reels humanize the founder, build instant rapport, and achieve 5x more shares than standard corporate announcements.</p>
     `
   }
 };
@@ -442,7 +556,19 @@ function initSampleModal() {
       if (sample) {
         if (modalClient) modalClient.textContent = `${sample.client} • ${sample.category}`;
         if (modalTitle) modalTitle.textContent = sample.title;
-        if (modalMeta) modalMeta.textContent = sample.meta;
+        if (modalMeta) {
+          modalMeta.innerHTML = `
+            <div>${sample.meta}</div>
+            ${sample.liveUrl ? `
+              <div style="margin-top: 0.65rem;">
+                <a href="${sample.liveUrl}" target="_blank" rel="noopener noreferrer" class="live-link-btn">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  <span>Open Live Published Resource</span>
+                </a>
+              </div>
+            ` : ''}
+          `;
+        }
         if (modalBody) modalBody.innerHTML = sample.content;
 
         modal.classList.add('open');
